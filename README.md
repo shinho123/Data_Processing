@@ -2,7 +2,77 @@
 2020년 데이터처리언어 개인 프로젝트
 ## 프로젝트 수행기간 : 2020.09.10~2020.10.27
 
+### 라이브러리
+```R
+library(rvest)
+library(magick)
+
+```
+
+
 ### 공튀기기 만들기
+
+```R
+library(magick)
+ball <- image_read("gong.png")
+table <- image_read("table.png")
+ball <- image_scale(ball, "40x40!")
+table <- image_scale(table, "300x400!")
+x <- 0
+y <- 0
+while(TRUE){
+  position <- paste("+", x, "+", y, sep="")
+  img <- image_composite(table, ball, offset=position)
+  print(img)
+  Sys.sleep(0.1)
+  x <- x+10
+  y <- y+10
+  print(x)
+  print(y)
+
+  # X, Y의 위치 변환: 시작
+  if(x==270 && y==270){
+    while (y < 370) {
+      position <- paste("+", x, "+", y, sep="")
+      img <- image_composite(table, ball, offset=position)
+      print(img)
+      Sys.sleep(0.1)
+      x <- x-10
+      y <- y+10
+      print(x)
+      print(y)
+    }
+  }
+  if(x==170 && y==370){
+    while(x > 0){
+      position <- paste("+", x, "+", y, sep="")
+      img <- image_composite(table, ball, offset=position)
+      print(img)
+      Sys.sleep(0.1)
+      x <- x-10
+      y <- y-10
+      print(x)
+      print(y)
+    }
+  }
+  if(x==0 && y==200){
+    while(y > 0){
+      position <- paste("+", x, "+", y, sep="")
+      img <- image_composite(table, ball, offset=position)
+      print(img)
+      Sys.sleep(0.1)
+      x <- x+10
+      y <- y-10
+      print(x)
+      print(y)
+    }
+  }
+  if(x == 200 && y == 0){
+    break
+  }
+  # X, Y의 위치 변환: 끝
+}
+```
 
 ![2024-02-25163728-ezgif com-optimize](https://github.com/shinho123/Data_Processing/assets/105840783/f2efe874-ba9a-4fe4-a2c1-9e2e91525882)
 
