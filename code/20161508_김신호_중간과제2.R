@@ -7,18 +7,18 @@ url <- "https://www.premierleague.com/tables"
 html <- read_html(url)
 
 # 프리미어리그 팀 이름 추출하여 저장
-team_name <- html_nodes(html, "span.long")[1:19] %>% html_text()
+team_name <- html_nodes(html, "span.long")[1:20] %>% html_text()
 team_name
 
 # 프리미어리그 승점 추출하여 저장
-team_point <- html_nodes(html, "td.points")[1:19] %>% html_text()
+team_point <- html_nodes(html, "td.points")[1:20] %>% html_text()
 
 # 불러온 프리미어리그 승점은 문자형이므로 타입변환으로 int형으로 변환시킨다.
 team_point <- as.integer(team_point)
 team_point
 
 # 위에서 수집된 팀이름과 승점 paste()함수로 합친뒤 "team_name_point"변수에 저장
-team_name_point = paste(c(1:19),"등", team_name , "-", team_point,"점")
+team_name_point = paste(c(1:20),"등", team_name , "-", team_point,"점")
 team_name_point
 
 # 팀이름과 승점을 데이터프레임 형태로 "premier_league" 변수에 저장
