@@ -6,7 +6,7 @@
 ```R
 library(rvest)
 library(magick)
-
+library(ggplot2)
 ```
 
 
